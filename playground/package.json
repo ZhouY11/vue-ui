@@ -1,0 +1,17 @@
+{
+  "name": "playground",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@vue-ui/ui": "workspace:*",
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "catalog:",
+    "vite": "catalog:",
+    "typescript": "catalog:"
+  },
+  "scripts": {
+    "dev": "vite"
+  }
+}

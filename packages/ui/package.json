@@ -1,0 +1,28 @@
+{
+  "name": "@vue-ui/ui",
+  "version": "0.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "peerDependencies": {
+    "vue": "catalog:"
+  },
+  "devDependencies": {
+    "vue": "catalog:"
+  },
+  "dependencies": {
+    "@vue-ui/components": "workspace:^",
+    "@vue-ui/shared": "workspace:^"
+  }
+}
