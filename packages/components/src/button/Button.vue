@@ -8,5 +8,5 @@ const label = computed(() => isString(props.variant) ? props.variant : '')
 </script>
 
 <template>
-    <div>ButtonV3 {{ label }}</div>
+    <div>ButtonV4 {{ label }}</div>
 </template>
