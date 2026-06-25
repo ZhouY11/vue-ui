@@ -8,14 +8,11 @@
         "build:ui": "tsx scripts/build.ts ui",
         "build:shared": "tsx scripts/build.ts shared",
         "build:components": "tsx scripts/build.ts components",
-        "typecheck": "pnpm typecheck:node && pnpm typecheck:packages",
+        "typecheck": "vue-tsc -b tsconfig.json --noEmit",
         "typecheck:node": "tsc -p tsconfig.node.json --noEmit",
-        "typecheck:packages": "vue-tsc -b tsconfig.json --pretty",
-        
         "changeset": "changeset",
         "version-packages": "changeset version",
-
-        "release:check": "pnpm typecheck && pnpm build",
+        "release:check": "pnpm build",
         "release:publish": "pnpm publish -r --registry http://localhost:4873/ --no-git-checks",
         "release": "pnpm release:check && pnpm release:publish"
     },
@@ -25,6 +22,7 @@
         "@rollup/plugin-node-resolve": "16.0.3",
         "@types/node": "26.0.0",
         "@vitejs/plugin-vue": "catalog:",
+        "execa": "9.6.1",
         "jsdom": "catalog:",
         "rollup": "4.62.2",
         "rollup-plugin-esbuild": "6.2.1",

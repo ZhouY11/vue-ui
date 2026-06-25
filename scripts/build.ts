@@ -1,6 +1,6 @@
 
 import { rm } from 'node:fs/promises';
-
+import { execa } from 'execa';
 import { rollup } from 'rollup';
 import { createPackageConfig } from './build-config';
 import { createWorkspaceGraph } from './workspace';
@@ -41,6 +41,15 @@ function parseArgs(args: string[]): BuildCliOptions {
   };
 }
 
+
+async function buildTypes() {
+  console.log('\n[types] vue-tsc -b tsconfig.json');
+
+  await execa('pnpm', ['exec', 'vue-tsc', '-b', 'tsconfig.json', '--pretty'], {
+    stdio: 'inherit'
+  });
+}
+
 async function buildPackage(
   graph: ReturnType<typeof createWorkspaceGraph>,
   pkg: ReturnType<typeof createWorkspaceGraph>['packages'][number]
@@ -65,6 +74,7 @@ async function buildPackage(
   }
 }
 
+
 async function main() {
   const options = parseArgs(process.argv.slice(2));
 
@@ -83,10 +93,13 @@ async function main() {
       .map((pkg) => `  - ${pkg.name}`)
       .join('\n')}`
   );
+  
 
   for (const pkg of sortedTargets) {
     await buildPackage(graph, pkg)
   }
+
+  await buildTypes()
 }
 
 main().catch((error) => {
